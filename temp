@@ -1,0 +1,39 @@
+一 应用流量聚合
+1 tcp_settime
+4 duringtime_window //同一个用户打开多个应用 则使用时间>>duringtime_window 2不可能两个应用反复多次同时打开
+2 src eq
+3 dst port and dst sequence
+4 tcp_backtime(dst_like,dst_port,tcp_backtime作为应用流量的新三原组判断流量标志流量聚合体)
+6 tcp_flower_feature[]
+二导入聚类算法
+
+三应用流量标注 //以有文字标注没有文字，以明文标记密文，以短标注长
+3 tcp_unenc_hostname
+5 tcp_head_packet_number
+7 tcp_flow_lenthset
+8 tcp_direction (src&dt)
+9 port (10000以下)
+10 tcp_src_near
+11 tcp_flow_len
+
+ tcp_mark
+ tcp_guess
+三应用分类
+
+
+
+
+
+
+
+wireshark tcp.flags.syn 
+.anaylise.re
+颜色rule 
+
+python pcap 读取
+pcap包结构 pcap文件头
+pcap head 包含时间戳
+可以读取时间戳
+端口协商？src 端口一直在变化？
+
+时间窗口应该如何建模
